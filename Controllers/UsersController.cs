@@ -66,8 +66,8 @@ namespace CashierApi.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [Authorize]
-        [HttpGet("{id:int}")]
-        public async Task<IActionResult> GetUserByIdAsync(int id)
+        [HttpGet("/{id}")]
+        public async Task<IActionResult> GetUserByIdAsync(string id)
         {
 
             var result = await _unitOfWork.Users.GetByIdAsync(id);
@@ -93,27 +93,25 @@ namespace CashierApi.Controllers
         /// <remarks>
         /// Sample request:
         ///
-        ///     PUT /users/{id:int}
+        ///     PUT /users/id
         ///     {
-        ///        "id": 1,
+        ///        "id": "user-id",
         ///        "firstName": "first_name",
         ///        "lastName": "last_name",
         ///        "imagePath": "image_path",
-        ///        "phoneNumber "096565453",
-        ///        "gender": "male",
-        ///        "userType": 1
+        ///        "phoneNumber "096565453"
         ///     }
         ///
         /// </remarks>
         /// <response code="200">Returns updated user</response>
         /// <response code="404">if there is no user record with sumitted id</response>
         /// <response code="400">if submitted data was wrong</response>
-        [HttpPut("{id:int}")]
+        [HttpPut("/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [Authorize]
-        public IActionResult UpdateUserAsync(int id, UserDto userDto)
+        public IActionResult UpdateUserAsync(string id, UserDto userDto)
         {
 
             var entity = _unitOfWork.Users.GetById(id);
@@ -152,7 +150,7 @@ namespace CashierApi.Controllers
         /// <remarks>
         /// Sample request:
         ///
-        ///     PUT /api/users/{id:int}/image
+        ///     PUT /api/users/id/image
         ///     {
         ///        "id": 1
         ///        "imageFile": "image_file"
@@ -168,8 +166,8 @@ namespace CashierApi.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [RequestFormLimits(MultipartBodyLengthLimit = 2097152)]
         //[Authorize(Roles = $"{UsersRolesNames.AdminRole}, {UsersRolesNames.StaffRole}")]
-        [HttpPut("{id:int}/image")]
-        public async Task<IActionResult> UploadUserImage(int id, IFormFile imageFile)
+        [HttpPut("{id}/image")]
+        public async Task<IActionResult> UploadUserImage(string id, IFormFile imageFile)
         {
             var user = await _unitOfWork.Users.GetByIdAsync(id);
             if (user is null)
@@ -205,7 +203,7 @@ namespace CashierApi.Controllers
         /// <remarks>
         /// Sample request:
         ///
-        ///     PATCH /api/users/{id:int}
+        ///     PATCH /api/users/id
         ///     [ 
         ///       {
         ///       "operationType": 0,
@@ -226,8 +224,8 @@ namespace CashierApi.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [Authorize]
-        [HttpPatch("{id:int}")]
-        public IActionResult UpdateSubServicePartial(int id, JsonPatchDocument<User> users)
+        [HttpPatch("/{id}")]
+        public IActionResult UpdateSubServicePartial(string id, JsonPatchDocument<User> users)
 
         {
             var entity = _unitOfWork.Users.GetById(id);
@@ -258,18 +256,18 @@ namespace CashierApi.Controllers
         /// <remarks>
         /// Sample request:
         ///
-        ///     DELETE /users/{id:int}
+        ///     DELETE /users/id
         ///
         /// </remarks>
         /// <response code="200">Deletes a user</response>
         /// <response code="404">if there is no user record with sumitted id</response>
         /// <response code="400">if submitted data was wrong</response>
-        [HttpDelete("{id:int}")]
+        [HttpDelete("/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [Authorize]
-        public IActionResult DeleteUserAsync(int id)
+        public IActionResult DeleteUserAsync(string id)
         {
 
             var entity = _unitOfWork.Users.GetById(id);

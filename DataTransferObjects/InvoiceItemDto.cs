@@ -4,6 +4,7 @@ namespace CashierApi.DataTransferObjects
 {
     public class InvoiceItemDto
     {
+        public int Id {  get; set; }    
 
         public string Name { get; set; }
 
