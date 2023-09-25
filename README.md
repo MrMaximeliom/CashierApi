@@ -1328,33 +1328,26 @@ deletes the record with the submitted id field.
 
 ## 4. Error Handling
 
-Explain how your API handles errors, the types of error responses clients can expect, and what they mean.
-
-Example:
-
-markdown
-## Error Handling
-
 Our API uses standard HTTP status codes to indicate success or failure of a request. In case of an error, a JSON response will be returned with the following structure:
 
-json
-{
+`{
   "error": {
     "code": "string",
     "message": "string"
   }
 }
+`
 
 
 For example, if you try to access a resource that does not exist, you will get a 404 status code with a response like:
 
-json
-{
+`{
   "error": {
     "code": "NotFound",
     "message": "The requested resource was not found."
   }
 }
+`
 
 ---
 
