@@ -18,15 +18,11 @@ Before using this API, ensure that you have .NET Core 6 or later installed in yo
 ---
 ## 3.Database Schema
 
-| First Header  | Second Header |
-| ------------- | ------------- |
-| Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  |
 
 ### Users Table:
 
 | Field | Type | IsRequired | IsPrimaryKey |
-| ----------- | ----------- |----------- |
+| ----------- | ----------- |----------- |----------- |
 | Id | String | True | True |
 | FirstName | String | True | False |
 | LastName | String | True | False |
@@ -37,7 +33,7 @@ Before using this API, ensure that you have .NET Core 6 or later installed in yo
 
 ### Products Table:
 | Field | Type | IsRequired | IsPrimaryKey |
-| ----------- | ----------- |----------- |
+| ----------- | ----------- |----------- |----------- |
 | Id | Int | True | True |
 | Name | String | True | False |
 | Barcode | String | True | False |
@@ -48,7 +44,7 @@ Before using this API, ensure that you have .NET Core 6 or later installed in yo
 
 ### Invoices Table:
 | Field | Type | IsRequired | IsPrimaryKey |
-| ----------- | ----------- |----------- |
+| ----------- | ----------- |----------- |----------- |
 | Id | Int | True | True |
 | Number | String | True | False |
 | VAT | Double| False | False |
@@ -57,7 +53,7 @@ Before using this API, ensure that you have .NET Core 6 or later installed in yo
 
 ### InvoiceItems Table:
 | Field | Type | IsRequired | IsPrimaryKey |
-| ----------- | ----------- |----------- |
+| ----------- | ----------- |----------- |----------- |
 | Id | Int | True | True |
 | Name | String | True | False |
 | Count | Int| False | False |
@@ -68,7 +64,7 @@ Before using this API, ensure that you have .NET Core 6 or later installed in yo
 
 ### Companies Table:
 | Field | Type | IsRequired | IsPrimaryKey |
-| ----------- | ----------- |----------- |
+| ----------- | ----------- |----------- |----------- |
 | Id | Int | True | True |
 | Name | String | True | False |
 | Description | String| False | False |
@@ -77,7 +73,7 @@ Before using this API, ensure that you have .NET Core 6 or later installed in yo
 
 ### Brands Table:
 | Field | Type | IsRequired | IsPrimaryKey |
-| ----------- | ----------- |----------- |
+| ----------- | ----------- |----------- |----------- |
 | Id | Int | True | True |
 | Name | String | True | False |
 | Description | String| False | False |
