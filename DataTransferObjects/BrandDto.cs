@@ -10,8 +10,8 @@ namespace CashierApi.DataTransferObjects
 
         public string? Description { get; set; }
 
-        public string LogoPath { get; set; }
-        public IFormFile LogoFile { get; set; }
+        public string? LogoPath { get; set; }
+        public IFormFile? LogoFile { get; set; }
 
 
         public DateTime? CreatedDate { get; set; } = DateTime.UtcNow;
@@ -19,6 +19,6 @@ namespace CashierApi.DataTransferObjects
         public DateTime? UpdatedDate { get; set; }
 
         // Navigation properties
-        public List<Product> Products { get; set; }
+        public List<Product>? Products { get; set; }
     }
 }

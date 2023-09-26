@@ -112,7 +112,7 @@ namespace CashierApi.Controllers
 
             var result = await _unitOfWork.Products.AddAsync(productDto.Adapt<Product>());
             var resultDto = result.Adapt<ProductDto>();
-
+            _unitOfWork.Complete();
             return Ok(resultDto);
 
 

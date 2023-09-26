@@ -112,7 +112,7 @@ namespace CashierApi.Controllers
 
             var result = await _unitOfWork.InvoiceItems.AddAsync(invoiceItemDto.Adapt<InvoiceItem>());
             var resultDto = result.Adapt<InvoiceItemDto>();
-
+            _unitOfWork.Complete();
             return Ok(resultDto);
 
 

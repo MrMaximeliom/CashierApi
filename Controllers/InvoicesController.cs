@@ -108,7 +108,7 @@ namespace CashierApi.Controllers
 
             var result = await _unitOfWork.Invoices.AddAsync(invoiceDto.Adapt<Invoice>());
             var resultDto = result.Adapt<InvoiceDto>();
-
+            _unitOfWork.Complete();
             return Ok(resultDto);
 
 

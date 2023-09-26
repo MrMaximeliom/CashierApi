@@ -105,12 +105,12 @@ namespace CashierApi.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [HttpPost]
-        public async Task<IActionResult> AddBrandAsync(BrandDto brandDto)
+        public async Task<IActionResult> AddBrandAsync(Brand brandDto)
         {
 
-            var result = await _unitOfWork.Brands.AddAsync(brandDto.Adapt<Brand>());
+           var result = await _unitOfWork.Brands.AddAsync(brandDto.Adapt<Brand>());
             var resultDto = result.Adapt<BrandDto>();
-
+            _unitOfWork.Complete();
             return Ok(resultDto);
 
 

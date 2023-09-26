@@ -45,7 +45,7 @@ namespace CashierApi.Controllers
             var result = await _unitOfWork.Companies.GetAllAsync();
             var resultDto = result.Adapt<CompanyDto>();
 
-            return Ok(resultDto);
+            return Ok(result);
 
 
         }
@@ -107,7 +107,9 @@ namespace CashierApi.Controllers
         {
 
             var result = await _unitOfWork.Companies.AddAsync(companyDto.Adapt<Company>());
+            _unitOfWork.Complete();
             var resultDto = result.Adapt<CompanyDto>();
+        
 
             return Ok(resultDto);
 
