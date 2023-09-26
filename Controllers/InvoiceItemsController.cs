@@ -12,6 +12,7 @@ namespace CashierApi.Controllers
 {
     [Route("api/invoice-items")]
     [Produces("application/json")]
+    [Authorize(AuthenticationSchemes = "Bearer")]
     [ApiController]
     public class InvoiceItemsController : ControllerBase
     {
@@ -35,9 +36,9 @@ namespace CashierApi.Controllers
         ///
         /// </remarks>
         /// <response code="200">Returns all invoice items</response>
-        [HttpGet]
+
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [Authorize]
+        [HttpGet]
         public async Task<IActionResult> GetAllInvoiceItemsAsync()
         {
 
@@ -63,7 +64,6 @@ namespace CashierApi.Controllers
         /// <response code="404">Returns not found if there is no invoice item with submitted id</response>
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [Authorize]
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetInvoiceItemByIdAsync(int id)
         {
@@ -103,10 +103,10 @@ namespace CashierApi.Controllers
         /// </remarks>
         /// <response code="200">Returns newly added invoice item</response>
         /// <response code="400">Returns bad request if submitted data was wrong</response>
-        [HttpPost]
+
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [Authorize]
+        [HttpPost]
         public async Task<IActionResult> AddInvoiceItemAsync(InvoiceItemDto invoiceItemDto)
         {
 
@@ -147,11 +147,11 @@ namespace CashierApi.Controllers
         /// <response code="200">Returns updated invoice item</response>
         /// <response code="404">if there is no invoice item record with sumitted id</response>
         /// <response code="400">if submitted data was wrong</response>
-        [HttpPut("{id:int}")]
+
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [Authorize]
+        [HttpPut("{id:int}")]
         public IActionResult UpdateInvoiceItemAsync(int id, InvoiceItemDto invoiceItemDto)
         {
 
@@ -216,7 +216,6 @@ namespace CashierApi.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [Authorize]
         [HttpPatch("{id:int}")]
         public IActionResult UpdateInvoiceItemPartial(int id, JsonPatchDocument<InvoiceItem> invoiceItem)
 
@@ -255,11 +254,11 @@ namespace CashierApi.Controllers
         /// <response code="200">Deletes an invoice item</response>
         /// <response code="404">if there is no invoice item record with sumitted id</response>
         /// <response code="400">if submitted data was wrong</response>
-        [HttpDelete("{id:int}")]
+
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [Authorize]
+        [HttpDelete("{id:int}")]
         public IActionResult DeleteInvoiceItemAsync(int id)
         {
 

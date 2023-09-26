@@ -12,6 +12,7 @@ namespace CashierApi.Controllers
 {
     [Route("api/users")]
     [Produces("application/json")]
+    [Authorize(AuthenticationSchemes = "Bearer")]
     [ApiController]
     public class UsersController : ControllerBase
     {
@@ -37,9 +38,9 @@ namespace CashierApi.Controllers
         ///
         /// </remarks>
         /// <response code="200">Returns all users</response>
-        [HttpGet]
+
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [Authorize]
+        [HttpGet]
         public async Task<IActionResult> GetAllUsersAsync()
         {
 
@@ -65,7 +66,6 @@ namespace CashierApi.Controllers
         /// <response code="404">Returns not found if there is no user with submitted id</response>
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [Authorize]
         [HttpGet("/{id}")]
         public async Task<IActionResult> GetUserByIdAsync(string id)
         {
@@ -106,11 +106,11 @@ namespace CashierApi.Controllers
         /// <response code="200">Returns updated user</response>
         /// <response code="404">if there is no user record with sumitted id</response>
         /// <response code="400">if submitted data was wrong</response>
-        [HttpPut("/{id}")]
+
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [Authorize]
+        [HttpPut("/{id}")]
         public IActionResult UpdateUserAsync(string id, UserDto userDto)
         {
 
@@ -165,7 +165,6 @@ namespace CashierApi.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [RequestFormLimits(MultipartBodyLengthLimit = 2097152)]
-        //[Authorize(Roles = $"{UsersRolesNames.AdminRole}, {UsersRolesNames.StaffRole}")]
         [HttpPut("{id}/image")]
         public async Task<IActionResult> UploadUserImage(string id, IFormFile imageFile)
         {
@@ -223,7 +222,6 @@ namespace CashierApi.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [Authorize]
         [HttpPatch("/{id}")]
         public IActionResult UpdateSubServicePartial(string id, JsonPatchDocument<User> users)
 
@@ -262,11 +260,11 @@ namespace CashierApi.Controllers
         /// <response code="200">Deletes a user</response>
         /// <response code="404">if there is no user record with sumitted id</response>
         /// <response code="400">if submitted data was wrong</response>
-        [HttpDelete("/{id}")]
+
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [Authorize]
+        [HttpDelete("/{id}")]
         public IActionResult DeleteUserAsync(string id)
         {
 

@@ -37,8 +37,13 @@ namespace CashierApi.Middlewares
             context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
 
             var response = _hostEnvironment.IsDevelopment()
-                ? new ExceptionHandlerResponse(context.Response.StatusCode,ex.Message , ex.StackTrace?.ToString())
-                : new ExceptionHandlerResponse(context.Response.StatusCode,"Internal Server Error");
+                ? new ExceptionHandlerResponse(context.Response.StatusCode, "development", ex.StackTrace?.ToString())
+                : new ExceptionHandlerResponse(context.Response.StatusCode, "dsdsd", ex.StackTrace?.ToString());
+
+/*
+            var response = _hostEnvironment.IsDevelopment()
+                ? new ExceptionHandlerResponse(context.Response.StatusCode, ex.Message, ex.StackTrace?.ToString())
+                : new ExceptionHandlerResponse(context.Response.StatusCode, "Internal Server Error");*/
 
             var options = new JsonSerializerOptions() { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
             var json = JsonSerializer.Serialize(response, options);

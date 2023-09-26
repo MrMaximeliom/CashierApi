@@ -12,6 +12,7 @@ namespace CashierApi.Controllers
 {
     [Route("api/companies")]
     [Produces("application/json")]
+    [Authorize(AuthenticationSchemes = "Bearer")]
     [ApiController]
     public class CompaniesController : ControllerBase
     {
@@ -35,9 +36,9 @@ namespace CashierApi.Controllers
         ///
         /// </remarks>
         /// <response code="200">Returns all companies</response>
-        [HttpGet]
+   
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [Authorize]
+        [HttpGet]
         public async Task<IActionResult> GetAllCompaniesAsync()
         {
 
@@ -63,7 +64,6 @@ namespace CashierApi.Controllers
         /// <response code="404">Returns not found if there is no company with submitted id</response>
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [Authorize]
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetCompanyByIdAsync(int id)
         {
@@ -99,10 +99,10 @@ namespace CashierApi.Controllers
         /// </remarks>
         /// <response code="200">Returns newly added company</response>
         /// <response code="400">Returns bad request if submitted data was wrong</response>
-        [HttpPost]
+
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [Authorize]
+        [HttpPost]
         public async Task<IActionResult> AddCompanyAsync(CompanyDto companyDto)
         {
 
@@ -139,11 +139,11 @@ namespace CashierApi.Controllers
         /// <response code="200">Returns updated company</response>
         /// <response code="404">if there is no company record with sumitted id</response>
         /// <response code="400">if submitted data was wrong</response>
-        [HttpPut("{id:int}")]
+
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [Authorize]
+        [HttpPut("{id:int}")]
         public IActionResult UpdateCompanyAsync(int id, CompanyDto companyDto)
         {
 
@@ -206,7 +206,6 @@ namespace CashierApi.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [Authorize]
         [HttpPatch("{id:int}")]
         public IActionResult UpdateCompanyPartial(int id, JsonPatchDocument<Company> company)
 
@@ -245,11 +244,11 @@ namespace CashierApi.Controllers
         /// <response code="200">Deletes a company</response>
         /// <response code="404">if there is no company record with sumitted id</response>
         /// <response code="400">if submitted data was wrong</response>
-        [HttpDelete("{id:int}")]
+
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [Authorize]
+        [HttpDelete("{id:int}")]
         public IActionResult DeleteCompanyAsync(int id)
         {
 

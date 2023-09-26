@@ -143,7 +143,9 @@ namespace CashierApi.Services
             {
                 return new Auth { Message = "Phone number is already registered!" };
             }
+           
             var user = model.Adapt<User>();
+            user.UserName = $"@{user.FirstName}";
 
             await _userManager.UpdateAsync(user);
 

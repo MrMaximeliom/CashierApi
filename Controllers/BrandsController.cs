@@ -12,6 +12,7 @@ namespace CashierApi.Controllers
 {
     [Route("api/brands")]
     [Produces("application/json")]
+    [Authorize(AuthenticationSchemes = "Bearer")]
     [ApiController]
     public class BrandsController : ControllerBase
     {
@@ -37,9 +38,9 @@ namespace CashierApi.Controllers
         ///
         /// </remarks>
         /// <response code="200">Returns all brands</response>
-        [HttpGet]
+     
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [Authorize]
+        [HttpGet]
         public async Task<IActionResult> GetAllBrandsAsync()
         {
 
@@ -65,7 +66,6 @@ namespace CashierApi.Controllers
         /// <response code="404">Returns not found if there is no brand with submitted id</response>
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [Authorize]
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetBrandByIdAsync(int id)
         {
@@ -101,10 +101,10 @@ namespace CashierApi.Controllers
         /// </remarks>
         /// <response code="200">Returns newly added brand</response>
         /// <response code="400">Returns bad request if submitted data was wrong</response>
-        [HttpPost]
+    
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [Authorize]
+        [HttpPost]
         public async Task<IActionResult> AddBrandAsync(BrandDto brandDto)
         {
 
@@ -141,11 +141,11 @@ namespace CashierApi.Controllers
         /// <response code="200">Returns updated brand</response>
         /// <response code="404">if there is no brand record with sumitted id</response>
         /// <response code="400">if submitted data was wrong</response>
-        [HttpPut("{id:int}")]
+ 
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [Authorize]
+        [HttpPut("{id:int}")]
         public IActionResult UpdateBrandAsync(int id, BrandDto brandDto)
         {
 
@@ -257,7 +257,6 @@ namespace CashierApi.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [Authorize]
         [HttpPatch("{id:int}")]
         public IActionResult UpdateBrandPartial(int id, JsonPatchDocument<Brand> brand)
 
@@ -296,11 +295,11 @@ namespace CashierApi.Controllers
         /// <response code="200">Deletes a brand</response>
         /// <response code="404">if there is no brand record with sumitted id</response>
         /// <response code="400">if submitted data was wrong</response>
-        [HttpDelete("{id:int}")]
+
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [Authorize]
+        [HttpDelete("{id:int}")]
         public IActionResult DeleteBrandAsync(int id)
         {
 

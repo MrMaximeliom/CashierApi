@@ -37,6 +37,12 @@ namespace CashierApi.ModelsConfigurations
                 .Property(x => x.PhoneNumber)
                 .HasMaxLength(30);
 
+            // configure Username properties
+            builder
+                .Property(x => x.UserName)
+                .IsRequired(false)
+                .HasMaxLength(30);
+
         }
     }
 }

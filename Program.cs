@@ -25,6 +25,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
         b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)
         ); 
 });
+builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IFileService, FileService>();
+
 
 // Add Authentication
 builder.Services.AddAuthentication(options =>
@@ -62,6 +65,7 @@ builder.Services.AddIdentity<User, IdentityRole>(options =>
     options.Password.RequireNonAlphanumeric = true;
     options.Password.RequireDigit = true;
     options.User.AllowedUserNameCharacters = String.Empty;
+    
 }).AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddScoped<IAuthService, AuthService>();
@@ -101,6 +105,7 @@ builder.Services.AddSwaggerGen(options =>
     var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
 });
+/* builder.Services.AddTransient<ExceptionMiddleware>(); */
 
 
 
@@ -115,9 +120,11 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
+
 app.UseAuthorization();
 
-app.UseMiddleware<ExceptionMiddleware>();
+/*app.UseMiddleware<ExceptionMiddleware>();*/
 
 app.MapControllers();
 
