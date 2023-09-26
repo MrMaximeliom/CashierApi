@@ -16,8 +16,70 @@ Before using this API, ensure that you have .NET Core 6 or later installed in yo
 - An IDE such as Visual Studio or Visual Studio Code
 
 ---
+## 3.Database Schema
 
-## 3. API Endpoints:
+### Users Table:
+
+| Field | Type | IsRequired | IsPrimaryKey |
+| ----------- | ----------- |----------- |
+| Id | String | True | True |
+| FirstName | String | True | False |
+| LastName | String | True | False |
+| Email | String | True | False |
+| Username | String | True | False |
+| Password | String | True | False |
+| CompanyId | Int | False | False |
+
+### Products Table:
+| Field | Type | IsRequired | IsPrimaryKey |
+| ----------- | ----------- |----------- |
+| Id | Int | True | True |
+| Name | String | True | False |
+| Barcode | String | True | False |
+| Description | String | False | False |
+| Price | Double | True | False |
+| Imagepath | String | False | False |
+| BrandId | Int | True | False |
+
+### Invoices Table:
+| Field | Type | IsRequired | IsPrimaryKey |
+| ----------- | ----------- |----------- |
+| Id | Int | True | True |
+| Number | String | True | False |
+| VAT | Double| False | False |
+| DeliveryPrice | Double | False | False |
+| UserId | Int | True | False |
+
+### InvoiceItems Table:
+| Field | Type | IsRequired | IsPrimaryKey |
+| ----------- | ----------- |----------- |
+| Id | Int | True | True |
+| Name | String | True | False |
+| Count | Int| False | False |
+| Discount | Double | False | False |
+| TotalPrice | Double | False | False |
+| InvoiceId | Int | True | False |
+| ProductId | Int | True | False |
+
+### Companies Table:
+| Field | Type | IsRequired | IsPrimaryKey |
+| ----------- | ----------- |----------- |
+| Id | Int | True | True |
+| Name | String | True | False |
+| Description | String| False | False |
+| Email | String | False | False |
+| PhoneNumber | String | False | False |
+
+### Brands Table:
+| Field | Type | IsRequired | IsPrimaryKey |
+| ----------- | ----------- |----------- |
+| Id | Int | True | True |
+| Name | String | True | False |
+| Description | String| False | False |
+| LogoPath | String | True | False |
+
+---
+## 4. API Endpoints:
 
 ### 1./api/auth endpoints:
 **POST /api/auth/login**
@@ -1326,7 +1388,7 @@ deletes the record with the submitted id field.
 
 ---
 
-## 4. Error Handling
+## 5. Error Handling
 
 Our API uses standard HTTP status codes to indicate success or failure of a request. In case of an error, a JSON response will be returned with the following structure:
 
@@ -1354,7 +1416,7 @@ For example, if you try to access a resource that does not exist, you will get a
 
 ---
 
-## 5. Contact Information
+## 6. Contact Information
 
 ### Feel free to reach me at anytime and send a [message](mailto:moayed.abdulhafiez@gmail.com)
 

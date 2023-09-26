@@ -18,6 +18,6 @@ namespace CashierApi.DataTransferObjects
         public DateTime? UpdatedAt { get; set; }
 
         // Navigation properties
-        public List<User> Employers { get; set; }
+        public List<User>? Employers { get; set; }
     }
 }

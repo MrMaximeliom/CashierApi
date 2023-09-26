@@ -52,7 +52,7 @@ namespace CashierApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Brands");
+                    b.ToTable("Brands", (string)null);
                 });
 
             modelBuilder.Entity("CashierApi.Models.Company", b =>
@@ -88,7 +88,7 @@ namespace CashierApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Companies");
+                    b.ToTable("Companies", (string)null);
                 });
 
             modelBuilder.Entity("CashierApi.Models.Invoice", b =>
@@ -124,7 +124,7 @@ namespace CashierApi.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Invoices");
+                    b.ToTable("Invoices", (string)null);
                 });
 
             modelBuilder.Entity("CashierApi.Models.InvoiceItem", b =>
@@ -167,7 +167,7 @@ namespace CashierApi.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("InvoiceItems");
+                    b.ToTable("InvoiceItems", (string)null);
                 });
 
             modelBuilder.Entity("CashierApi.Models.Product", b =>
@@ -212,7 +212,7 @@ namespace CashierApi.Migrations
 
                     b.HasIndex("BrandId");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -553,7 +553,7 @@ namespace CashierApi.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.OwnsMany("CashierApi.Models.RefreshToken", "RefreshTokens", b1 =>
+                    b.OwnsMany("CashierApi.Models.User.RefreshTokens#CashierApi.Models.RefreshToken", "RefreshTokens", b1 =>
                         {
                             b1.Property<string>("UserId")
                                 .HasColumnType("nvarchar(450)");
@@ -579,7 +579,7 @@ namespace CashierApi.Migrations
 
                             b1.HasKey("UserId", "Id");
 
-                            b1.ToTable("RefreshToken");
+                            b1.ToTable("RefreshToken", (string)null);
 
                             b1.WithOwner()
                                 .HasForeignKey("UserId");

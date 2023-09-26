@@ -21,8 +21,8 @@ namespace CashierApi.DataTransferObjects
 
 
         // Navigation properties
-        public List<InvoiceItemDto> InvoiceItems { get; set; }
+        public List<InvoiceItemDto>? InvoiceItems { get; set; }
 
-        public User User { get; set; }
+        public User? User { get; set; }
     }
 }

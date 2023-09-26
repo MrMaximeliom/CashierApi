@@ -28,9 +28,9 @@ namespace CashierApi.DataTransferObjects
         public int BrandId { get; set; }
 
         // Navigation properties
-        public Brand Brand { get; set; }
+        public Brand? Brand { get; set; }
 
-        public List<InvoiceItem> InvoiceItems { get; set; }
+        public List<InvoiceItem>? InvoiceItems { get; set; }
 
     }
 }

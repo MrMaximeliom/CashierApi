@@ -25,8 +25,8 @@ namespace CashierApi.DataTransferObjects
         public int ProductId { get; set; }
 
         // Navigation properties
-        public Invoice Invoice { get; set; }
+        public Invoice? Invoice { get; set; }
 
-        public Product Product { get; set; }
+        public Product? Product { get; set; }
     }
 }
