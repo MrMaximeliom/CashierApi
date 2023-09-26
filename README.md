@@ -18,6 +18,11 @@ Before using this API, ensure that you have .NET Core 6 or later installed in yo
 ---
 ## 3.Database Schema
 
+| First Header  | Second Header |
+| ------------- | ------------- |
+| Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  |
+
 ### Users Table:
 
 | Field | Type | IsRequired | IsPrimaryKey |
@@ -376,7 +381,7 @@ Updates the record with submitted id field using PATCH method
 - `path` : (required - string field- property name)
 - `op` : (required - string field - `replace`)
 - `from` : (not required - string field)
-- `value` : (required - property’s type)
+- `value` : (required - propertyâ€™s type)
 
 **Returns:**
 - 204 Success no content
@@ -582,7 +587,7 @@ Updates the record with submitted id field using PATCH method
 - `path` : (required - string field- property name)
 - `op` : (required - string field - `replace`)
 - `from` : (not required - string field)
-- `value` : (required - property’s type)
+- `value` : (required - propertyâ€™s type)
 
 **Returns:**
 - 204 Success no content
@@ -766,7 +771,7 @@ Updates the record with submitted id field using PATCH method
 - `path` : (required - string field- property name)
 - `op` : (required - string field - `replace`)
 - `from` : (not required - string field)
-- `value` : (required - property’s type)
+- `value` : (required - propertyâ€™s type)
 
 **Returns:**
 - 204 Success no content
@@ -951,7 +956,7 @@ Updates the record with submitted id field using PATCH method
 - `path` : (required - string field- property name)
 - `op` : (required - string field - `replace`)
 - `from` : (not required - string field)
-- `value` : (required - property’s type)
+- `value` : (required - propertyâ€™s type)
 
 **Returns:**
 - 204 Success no content
@@ -1150,7 +1155,7 @@ Updates the record with submitted id field using PATCH method
 - `path` : (required - string field- property name)
 - `op` : (required - string field - `replace`)
 - `from` : (not required - string field)
-- `value` : (required - property’s type)
+- `value` : (required - propertyâ€™s type)
 
 **Returns:**
 - 204 Success no content
@@ -1343,7 +1348,7 @@ Updates the record with submitted id field using PATCH method
 - `path` : (required - string field- property name)
 - `op` : (required - string field - `replace`)
 - `from` : (not required - string field)
-- `value` : (required - property’s type)
+- `value` : (required - propertyâ€™s type)
 
 **Returns:**
 - 204 Success no content
