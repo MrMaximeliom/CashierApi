@@ -20,7 +20,7 @@ namespace CashierApi.Controllers
 
         private readonly IFileService _fileService;
 
-        public BrandsController(IUnitOfWork unitOfWork, IFileService fileService = null)
+        public BrandsController(IUnitOfWork unitOfWork, IFileService fileService)
         {
             _unitOfWork = unitOfWork;
             _fileService = fileService;

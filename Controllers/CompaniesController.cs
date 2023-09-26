@@ -19,7 +19,7 @@ namespace CashierApi.Controllers
         private readonly IUnitOfWork _unitOfWork;
 
 
-        public CompaniesController(IUnitOfWork unitOfWork, IFileService fileService = null)
+        public CompaniesController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }

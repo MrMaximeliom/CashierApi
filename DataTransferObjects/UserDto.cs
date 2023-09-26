@@ -1,6 +1,4 @@
 ﻿using CashierApi.Models;
-using CashierApi.Constants;
-using CashierApi.Models;
 
 namespace CashierApi.DataTransferObjects
 {
